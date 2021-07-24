@@ -4,17 +4,27 @@ using Jokenpo.API.Services.Interfaces;
 using Jokenpo.API.Enum;
 using System;
 using Jokenpo.API.Business;
+using Jokenpo.API.Repositories.Interfaces;
+using Jokenpo.API.Entities;
 
 namespace Jokenpo.API.Services
 {
     public class JogarService : IJogarService
     {
-        ValidacaoJogada validacao = new ValidacaoJogada();
-        ValidacaoVencedor vencedor = new ValidacaoVencedor();        
+        private readonly IJokenpoRepository<Ranking> _repository;
+        private readonly ValidacaoJogada _validacao;
+         private readonly ValidacaoVencedor _vencedor;
 
+        public JogarService(IJokenpoRepository<Ranking> repository)
+        {
+            _repository = repository;
+            _validacao = new ValidacaoJogada();
+            _vencedor = new ValidacaoVencedor();   
+        }      
+              
         public string NovoJogo(int escolha)
         {
-            int[] opcoes = new int[] {Opcoes.pedra.GetHashCode(), Opcoes.papel.GetHashCode(), Opcoes.tesoura.GetHashCode()};
+            int[] opcoes = new int[] {OpcoesEscolha.pedra.GetHashCode(), OpcoesEscolha.papel.GetHashCode(), OpcoesEscolha.tesoura.GetHashCode()};
             string result = string.Empty;
             
             if(!opcoes.Contains(escolha)){
@@ -24,9 +34,19 @@ namespace Jokenpo.API.Services
                 var randon = new Random();
                 var index = randon.Next(opcoes.Count());
 
-                var resultado = validacao.CalcularVencedor(escolha, opcoes[index]);
+                var resultado = _validacao.CalcularVencedor(escolha, opcoes[index]);
 
-                result = vencedor.RetornaVencedor(escolha, opcoes[index], resultado);
+                result = _vencedor.RetornaVencedor(escolha, opcoes[index], resultado);
+
+                    var ranking = new Ranking(){
+                        Vencedor = result,
+                        EscolhaJogador = escolha,
+                        DscEscolhaJogador = ((OpcoesEscolha)escolha).ToString(),
+                        EscolhaMaquina = opcoes[index],
+                        DscEscolhaMaquina = ((OpcoesEscolha)opcoes[index]).ToString()
+                    };
+
+                _repository.Inserir(ranking);
 
             }
 

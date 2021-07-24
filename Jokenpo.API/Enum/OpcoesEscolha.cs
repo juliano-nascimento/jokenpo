@@ -1,6 +1,6 @@
 namespace Jokenpo.API.Enum
 {
-    public enum Opcoes
+    public enum OpcoesEscolha
     {
         tesoura = 1,
         pedra = 2,

@@ -6,7 +6,7 @@ namespace Jokenpo.API.Business
             string vencedor = string.Empty;
 
             if(resultado == jogador1)
-               return  vencedor = "Você venceu";
+               return  vencedor = "Jogador venceu";
             else if(resultado == maquina)
                return vencedor = "A maquina venceu";
             else

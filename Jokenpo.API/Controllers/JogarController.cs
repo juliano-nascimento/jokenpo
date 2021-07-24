@@ -1,4 +1,8 @@
+using System;
+using Jokenpo.API.Entities;
+using Jokenpo.API.Repositories.Interfaces;
 using Jokenpo.API.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Jokenpo.API.Controllers
@@ -8,10 +12,42 @@ namespace Jokenpo.API.Controllers
     public class JogarController : ControllerBase
     {
         private readonly IJogarService _jogarService;
+        private readonly IJokenpoRepository<Ranking> _repository;
 
-        public JogarController(IJogarService jogarService)
+        public JogarController(IJogarService jogarService, IJokenpoRepository<Ranking> repository)
         {
-            _jogarService=jogarService;
+            _jogarService = jogarService;
+            _repository = repository;
+        }
+
+        [HttpGet("getHistorico")]
+        public IActionResult Get(){
+
+            try
+            {
+                var results = _repository.Lista();
+                return Ok(results);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                ex.Message);
+            }
+        }
+        
+        [HttpGet("getRanking")]
+        public IActionResult GetRanking(){
+
+            try
+            {
+                var results = _repository.BuscarRanking();
+                return Ok(results);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                ex.Message);
+            }
         }
 
         /// <summary>
