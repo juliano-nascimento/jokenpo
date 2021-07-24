@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "NCPByX1dVmi+hmGwSX9iLoL7vrM35oizFS8QwPA81xHGX8DiJucgfU1zVXu8dxCNy6CtALWG2dQiV0gfnOE/mQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\juliano\\source\\repos\\Jokenpo\\Jokenpo.API\\Jokenpo.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\juliano\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\juliano\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\juliano\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\juliano\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\juliano\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\juliano\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
